@@ -73,7 +73,7 @@ NSString * const CTAssetsSupplementaryViewIdentifier = @"CTAssetsSupplementaryVi
     
     if (self = [super initWithCollectionViewLayout:layout])
     {
-        self.collectionView.allowsMultipleSelection = YES;
+        self.collectionView.allowsMultipleSelection = NO;
         
         [self.collectionView registerClass:CTAssetsViewCell.class
                 forCellWithReuseIdentifier:CTAssetsViewCellIdentifier];
@@ -137,11 +137,11 @@ NSString * const CTAssetsSupplementaryViewIdentifier = @"CTAssetsSupplementaryVi
 
 - (void)setupButtons
 {
-    self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"Done", @"CTAssetsPickerController", nil)
-                                     style:UIBarButtonItemStyleDone
-                                    target:self.picker
-                                    action:@selector(finishPickingAssets:)];
+//    self.navigationItem.rightBarButtonItem =
+//    [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"Done", @"CTAssetsPickerController", nil)
+//                                     style:UIBarButtonItemStyleDone
+//                                    target:self.picker
+//                                    action:@selector(finishPickingAssets:)];
     
     self.navigationItem.rightBarButtonItem.enabled = (self.picker.selectedAssets.count > 0);
 }
@@ -282,8 +282,10 @@ NSString * const CTAssetsSupplementaryViewIdentifier = @"CTAssetsSupplementaryVi
 
 - (void)addGestureRecognizer
 {
-    UILongPressGestureRecognizer *longPress =
-    [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pushPageViewController:)];
+//    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+//                                                                                            action:@selector(pushPageViewController:)];
+    UITapGestureRecognizer *longPress = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                action:@selector(pushPageViewController:)];
     
     [self.collectionView addGestureRecognizer:longPress];
 }
@@ -291,10 +293,11 @@ NSString * const CTAssetsSupplementaryViewIdentifier = @"CTAssetsSupplementaryVi
 
 #pragma mark - Push Assets Page View Controller
 
-- (void)pushPageViewController:(UILongPressGestureRecognizer *)longPress
+//- (void)pushPageViewController:(UILongPressGestureRecognizer *)longPress
+- (void)pushPageViewController:(UITapGestureRecognizer *)longPress
 {
-    if (longPress.state == UIGestureRecognizerStateBegan)
-    {
+//    if (longPress.state == UIGestureRecognizerStateBegan)
+//    {
         CGPoint point           = [longPress locationInView:self.collectionView];
         NSIndexPath *indexPath  = [self.collectionView indexPathForItemAtPoint:point];
 
@@ -302,7 +305,7 @@ NSString * const CTAssetsSupplementaryViewIdentifier = @"CTAssetsSupplementaryVi
         vc.pageIndex = indexPath.item;
 
         [self.navigationController pushViewController:vc animated:YES];
-    }
+//    }
 }
 
 
@@ -424,12 +427,12 @@ NSString * const CTAssetsSupplementaryViewIdentifier = @"CTAssetsSupplementaryVi
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ALAsset *asset = [self.assets objectAtIndex:indexPath.row];
+//    ALAsset *asset = [self.assets objectAtIndex:indexPath.row];
     
-    [self.picker selectAsset:asset];
+//    [self.picker selectAsset:asset];
     
-    if ([self.picker.delegate respondsToSelector:@selector(assetsPickerController:didSelectAsset:)])
-        [self.picker.delegate assetsPickerController:self.picker didSelectAsset:asset];
+//    if ([self.picker.delegate respondsToSelector:@selector(assetsPickerController:didSelectAsset:)])
+//        [self.picker.delegate assetsPickerController:self.picker didSelectAsset:asset];
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath

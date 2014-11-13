@@ -172,7 +172,7 @@ NSString * const CTAssetsPickerSelectedAssetsChangedNotification = @"CTAssetsPic
 {
     if ([keyPath isEqual:@"selectedAssets"])
     {
-        [self toggleDoneButton];
+//        [self toggleDoneButton];
         [self postNotification:[object valueForKey:keyPath]];
     }
 }
@@ -243,7 +243,7 @@ NSString * const CTAssetsPickerSelectedAssetsChangedNotification = @"CTAssetsPic
 
 - (void)deselectAsset:(ALAsset *)asset
 {
-    [self removeObjectFromSelectedAssetsAtIndex:[self.selectedAssets indexOfObject:asset]];
+//    [self removeObjectFromSelectedAssetsAtIndex:[self.selectedAssets indexOfObject:asset]];
 }
 
 

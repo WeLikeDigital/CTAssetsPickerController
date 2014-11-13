@@ -28,8 +28,8 @@
 #import "CTAssetsPageViewController.h"
 #import "CTAssetItemViewController.h"
 #import "CTAssetScrollView.h"
-
-
+#import "CTAssetsGroupViewController.h"
+#import "CTAssetsPickerController.h"
 
 
 
@@ -59,6 +59,10 @@
         self.delegate               = self;
         self.view.backgroundColor   = [UIColor whiteColor];
         self.automaticallyAdjustsScrollViewInsets = NO;
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"Send", @"CTAssetsPickerController", nil)
+                                                                                  style:UIBarButtonItemStyleDone
+                                                                                 target:self
+                                                                                 action:@selector(finishPickingAssets:)];
     }
     
     return self;
@@ -239,6 +243,14 @@
 - (ALAsset *)assetAtIndex:(NSUInteger)index;
 {
     return [self.assets objectAtIndex:index];
+}
+
+#pragma mark - finish picking
+-(void) finishPickingAssets:(id)sender
+{
+    CTAssetsPickerController *picker = (CTAssetsPickerController *)self.navigationController.parentViewController;
+    picker.selectedAssets =  [@[self.assets[[self pageIndex]]] mutableCopy];
+    [picker finishPickingAssets:nil];
 }
 
 @end

@@ -27,8 +27,11 @@
 
 #import <UIKit/UIKit.h>
 
-
+@class CTAssetsPickerController;
 
 @interface CTAssetsGroupViewController : UITableViewController
+
+- (CTAssetsPickerController *)picker;
+- (void)finishPickingAssets:(id)sender;
 
 @end

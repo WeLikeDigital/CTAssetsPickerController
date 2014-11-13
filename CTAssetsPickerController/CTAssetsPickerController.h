@@ -113,6 +113,8 @@
  */
 - (void)deselectAsset:(ALAsset *)asset;
 
+- (void)finishPickingAssets:(id)sender;
+
 @end
 
 
@@ -306,8 +308,6 @@
  *  @see assetsPickerController:didHighlightAsset:
  */
 - (void)assetsPickerController:(CTAssetsPickerController *)picker didUnhighlightAsset:(ALAsset *)asset;
-
-
 
 /**
  *  @name Notifications

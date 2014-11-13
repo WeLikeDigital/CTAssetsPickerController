@@ -36,7 +36,6 @@
 @interface CTAssetsPickerController ()
 
 - (void)dismiss:(id)sender;
-- (void)finishPickingAssets:(id)sender;
 
 - (NSString *)toolbarTitle;
 - (UIView *)notAllowedView;
@@ -127,11 +126,11 @@
                                         action:@selector(dismiss:)];
     }
     
-    self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"Done", @"CTAssetsPickerController", nil)
-                                     style:UIBarButtonItemStyleDone
-                                    target:self.picker
-                                    action:@selector(finishPickingAssets:)];
+//    self.navigationItem.rightBarButtonItem =
+//    [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"Done", @"CTAssetsPickerController", nil)
+//                                     style:UIBarButtonItemStyleDone
+//                                    target:self.picker
+//                                    action:@selector(finishPickingAssets:)];
     
     self.navigationItem.rightBarButtonItem.enabled = (self.picker.selectedAssets.count > 0);
 }
