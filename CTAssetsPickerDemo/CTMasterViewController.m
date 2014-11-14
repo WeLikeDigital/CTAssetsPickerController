@@ -91,7 +91,7 @@
 
 - (void)pickAssets:(id)sender
 {
-    if (!self.assets)
+//    if (!self.assets)
         self.assets = [[NSMutableArray alloc] init];
 
     CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
