@@ -59,8 +59,8 @@
         self.delegate               = self;
         self.view.backgroundColor   = [UIColor whiteColor];
         self.automaticallyAdjustsScrollViewInsets = NO;
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"Send", @"CTAssetsPickerController", nil)
-                                                                                  style:UIBarButtonItemStyleDone
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Send", nil)
+                                                                                  style:UIBarButtonItemStylePlain
                                                                                  target:self
                                                                                  action:@selector(finishPickingAssets:)];
     }

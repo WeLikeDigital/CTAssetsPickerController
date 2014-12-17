@@ -143,7 +143,7 @@
 - (void)localize
 {
     if (!self.picker.title)
-        self.title = NSLocalizedStringFromTable(@"Photos", @"CTAssetsPickerController", nil);
+        self.title = NSLocalizedString(@"Photos", nil);
     else
         self.title = self.picker.title;
 }
