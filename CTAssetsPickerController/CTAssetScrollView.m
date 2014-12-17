@@ -186,6 +186,12 @@ NSString * const CTAssetScrollViewTappedNotification = @"CTAssetScrollViewTapped
             image = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage
                                         scale:scale
                                   orientation:UIImageOrientationUp];
+        
+            if (!image) {
+                image = [UIImage imageWithCGImage:asset.thumbnail
+                                            scale:scale
+                                      orientation:UIImageOrientationUp];
+            }
         }
         else
         {
@@ -238,14 +244,11 @@ NSString * const CTAssetScrollViewTappedNotification = @"CTAssetScrollViewTapped
     
     ALAsset *asset = [self.dataSource assetAtIndex:self.index];
     
-    if ([asset isVideo] || !asset.defaultRepresentation)
-    {
+    if ([asset isVideo] || !asset.defaultRepresentation) {
         self.minimumZoomScale = minScale;
         self.maximumZoomScale = minScale;
     }
-    
-    else
-    {
+    else {
         self.minimumZoomScale = minScale;
         self.maximumZoomScale = maxScale;
     }
